@@ -170,6 +170,8 @@ Microsoft (n.d.) ASP.NET Core MVC documentation. Available at: https://learn.mic
 
 Stack Overflow (2010) HttpWebRequest using Basic authentication. Available at: https://stackoverflow.com/questions/4334521/httpwebrequest-using-basic-authentication (Accessed: 11 May 2025).
 
+OpenAI. (2025). ChatGPT [Large language model]. Available at: https://chat.openai.com (Accessed: 13 May 2025).
+
 JetBrains (2023) Basics of ASP.NET MVC. Available at: https://www.jetbrains.com/guide/dotnet/tutorials/basics/aspnet-mvc/ (Accessed: 12 May 2025).
 
 Microsoft (2024) Introduction to C# - Interactive Tutorials. Available at: https://learn.microsoft.com/en-us/dotnet/csharp/tour-of-csharp/tutorials/ (Accessed: 12 May 2025).
