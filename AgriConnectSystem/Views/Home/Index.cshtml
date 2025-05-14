@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<h2>Welcome to AgriConnectSystem</h2>
+
+@if (ViewBag.Role == "Farmer")
+{
+    <p>You are logged in as a <strong>Farmer</strong>.</p>
+}
+else if (ViewBag.Role == "Employee")
+{
+    <p>You are logged in as an <strong>Employee</strong>.</p>
+}

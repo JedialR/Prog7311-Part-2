@@ -1,0 +1,63 @@
+﻿@model AgriConnectSystem.Models.Product
+
+@{
+    ViewData["Title"] = "Add Product";
+    var role = Context.Session.GetString("UserRole");
+}
+
+<h2 class="text-center mb-4">Add Product</h2>
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger text-center">@TempData["Error"]</div>
+}
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success text-center">@TempData["Success"]</div>
+}
+
+<form asp-action="Create" method="post" asp-antiforgery="true" class="w-50 mx-auto">
+    <!-- Removed validation summary so missing fields won't block submission -->
+
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label">Product Name</label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Category" class="form-label">Category</label>
+        <select asp-for="Category" class="form-select">
+            <option value="">-- Select Category --</option>
+            <option>Vegetables</option>
+            <option>Fruits</option>
+            <option>Dairy</option>
+            <option>Grains</option>
+            <option>Livestock</option>
+            <option>Other</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="ProductionDate" class="form-label">Production Date</label>
+        <input asp-for="ProductionDate" type="date" class="form-control" />
+    </div>
+
+    @if (role == "Employee")
+    {
+        <div class="mb-3">
+            <label asp-for="FarmerId" class="form-label">Assign to Farmer</label>
+            <select asp-for="FarmerId" class="form-select" asp-items="@(new SelectList(ViewBag.Farmers, "Id", "FullName"))">
+                <option value="">-- Select Farmer --</option>
+            </select>
+        </div>
+    }
+
+    <div class="text-center">
+        <button type="submit" class="btn btn-success w-50">Add Product</button>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+

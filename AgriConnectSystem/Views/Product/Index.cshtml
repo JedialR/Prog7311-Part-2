@@ -1,0 +1,64 @@
+﻿@model IEnumerable<AgriConnectSystem.Models.Product>
+@{
+    ViewData["Title"] = "Products";
+    var role = Context.Session.GetString("UserRole");
+    bool isFarmer = role == "Farmer";
+}
+
+<h2 class="mb-4 text-center">
+    @(isFarmer ? "My Products" : "All Products")
+</h2>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success text-center">
+        @TempData["Success"]
+    </div>
+}
+
+<div class="text-center mb-4">
+    <form method="get" asp-action="Filter" class="d-flex justify-content-center gap-2 flex-wrap">
+        <input name="category" class="form-control w-auto" placeholder="Search by category..." />
+        <button type="submit" class="btn btn-primary">Filter</button>
+    </form>
+</div>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info text-center">
+        <p>
+            @(isFarmer ? "You haven't added any products yet." : "No products found.")
+        </p>
+
+        @if (isFarmer)
+        {
+            <a href="/Product/Create" class="btn btn-success mt-2">Add Product</a>
+        }
+    </div>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead class="table-light">
+                <tr>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Production Date</th>
+                    <th>Farmer</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var product in Model)
+                {
+                    <tr>
+                        <td>@product.Name</td>
+                        <td>@product.Category</td>
+                        <td>@product.ProductionDate.ToShortDateString()</td>
+                        <td>@product.Farmer?.FullName</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}

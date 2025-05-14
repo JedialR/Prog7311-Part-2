@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Farmer Dashboard";
+}
+
+<h2 class="text-center mb-4">Welcome to Your Dashboard</h2>
+
+<div class="container d-flex flex-column align-items-center">
+    <div class="list-group w-50">
+        <a asp-controller="Product" asp-action="Create" class="list-group-item list-group-item-action">
+            ➕ Add New Product
+        </a>
+
+        <a asp-controller="Product" asp-action="Index" class="list-group-item list-group-item-action">
+            📦 View My Products
+        </a>
+
+        <a asp-controller="Product" asp-action="Filter" class="list-group-item list-group-item-action">
+            🔍 Filter My Products by Category
+        </a>
+    </div>
+</div>
+
